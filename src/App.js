@@ -1,7 +1,8 @@
 import React from 'react';
-import Header from './components/Header'
 import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
 import Books from './components/Books';
+import Categories from './components/categories';
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Books />} />
-        {/* <Route path="categories" element={<Categories />} /> */}
+        <Route path="categories" element={<Categories />} />
       </Routes>
     </div>
   );

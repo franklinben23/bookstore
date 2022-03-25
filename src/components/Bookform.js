@@ -1,34 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 const BookForm = (props) => {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  const { submitBook } = props;
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
   const titleTilt = (e) => {
-    setTitle(e.target.value)
+    setTitle(e.target.value);
   };
 
   const authorTilt = (e) => {
-    setAuthor(e.target.value)
+    setAuthor(e.target.value);
   };
 
   const formSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      props.submitBook(title, author)
-      setTitle('')
-      setAuthor('')
-    }
-    else {
+      submitBook(title, author);
+      setTitle('');
+      setAuthor('');
+    } else {
       alert('Please write item');
     }
-  }
+  };
 
   return (
     <form className="book-form" onSubmit={formSubmit}>
       <input type="text" placeholder="title" value={title} name="title" onChange={titleTilt} />
       <input type="text" placeholder="author" value={author} name="author" onChange={authorTilt} />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };
