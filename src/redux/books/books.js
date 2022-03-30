@@ -13,7 +13,7 @@ export default function booksReducer(state = [], action) {
       return state.filter((book) => book.id !== action.id);
     default: return state;
   }
-};
+}
 
 // Action Creators
 export function addBook(title, author, id) {

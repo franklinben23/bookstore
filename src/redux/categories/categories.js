@@ -10,7 +10,7 @@ export default function categoryReducer(state = [], action) {
       return 'Under construction';
     default: return state;
   }
-};
+}
 
 // Action Creators
 export function deleteBook() {
