@@ -3,7 +3,7 @@ const ADDBOOK = 'ADD_BOOK';
 const DELETEBOOK = 'DELETE_BOOK';
 
 // Reducer
-export const booksReducer = (state = [], action) => {
+export default function booksReducer(state = [], action) {
   switch (action.type) {
     case 'ADD_BOOK':
       return [

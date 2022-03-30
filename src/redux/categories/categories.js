@@ -4,7 +4,7 @@
 const CHECK = 'CHECK_STATUS';
 
 // Reducer
-export const categoryReducer = (state = [], action) => {
+export default function categoryReducer(state = [], action) {
   switch (action.type) {
     case 'CHECK_STATUS':
       return 'Under construction';
