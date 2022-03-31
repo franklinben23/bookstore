@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import { addBook } from '../redux/books/books';
 
-const BookForm = (props) => {
-  const { submitBook } = props;
+const BookForm = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const dispatch = useDispatch();
 
   const titleTilt = (e) => {
     setTitle(e.target.value);
@@ -16,7 +19,8 @@ const BookForm = (props) => {
   const formSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      submitBook(title, author);
+      const bookAcc = addBook(title, author, uuidv4());
+      dispatch(bookAcc);
       setTitle('');
       setAuthor('');
     } else {

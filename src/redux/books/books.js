@@ -16,12 +16,14 @@ export default function booksReducer(state = [], action) {
 }
 
 // Action Creators
-export function addBook(title, author, id) {
+function addBook(title, author, id) {
   return {
     type: ADDBOOK, title, author, id,
   };
 }
 
-export function deleteBook(id) {
+function deleteBook(id) {
   return { type: DELETEBOOK, id };
 }
+
+export { deleteBook, addBook };
