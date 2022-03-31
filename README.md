@@ -1,4 +1,4 @@
-# Math Magicians
+# Bookstore
 
 React app that displays a list of books and methods to add them and delete them.
 
