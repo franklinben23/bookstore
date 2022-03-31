@@ -13,6 +13,6 @@ export default function categoryReducer(state = [], action) {
 }
 
 // Action Creators
-export function deleteBook() {
+export function cate() {
   return { type: CHECK };
 }

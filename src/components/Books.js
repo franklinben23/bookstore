@@ -1,29 +1,26 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import BookForm from './Bookform';
+import { deleteBook } from '../redux/books/books';
 
 const BookList = (props) => (
   props.books.map((book) => <Book title={book.title} author={book.author} key={book.id} delButton={() => { props.delButton(book.id); }} />)
 );
 
 const Books = () => {
-  const [books, setBooks] = useState([]);
-
-  const addBook = (title, author) => {
-    const newBook = { id: uuidv4(), title, author };
-    setBooks([...books, newBook]);
-  };
+  const booksArr = useSelector((state) => state.books);
+  const dispatch = useDispatch();
 
   const delBooks = (id) => {
-    const newtodos = [...books.filter((book) => book.id !== id)];
-    setBooks(newtodos);
+    const bookToDel = deleteBook(id);
+    dispatch(bookToDel);
   };
 
   return (
     <>
-      <BookList books={books} delButton={delBooks} />
-      <BookForm submitBook={addBook} />
+      <BookList books={booksArr} delButton={delBooks} />
+      <BookForm />
     </>
   );
 };

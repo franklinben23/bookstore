@@ -3,7 +3,7 @@ const ADDBOOK = 'ADD_BOOK';
 const DELETEBOOK = 'DELETE_BOOK';
 
 // Reducer
-export default function booksReducer(state = [], action) {
+export default function booksReducer(state = [{ title: 'waterfall', author: 'benjamin', id: 10 }, { title: 'nightsky', author: 'juan', id: 15 }, { title: 'hate love', author: 'jose', id: 20 }], action) {
   switch (action.type) {
     case 'ADD_BOOK':
       return [
@@ -16,12 +16,14 @@ export default function booksReducer(state = [], action) {
 }
 
 // Action Creators
-export function addBook(title, author, id) {
+function addBook(title, author, id) {
   return {
     type: ADDBOOK, title, author, id,
   };
 }
 
-export function deleteBook(id) {
+function deleteBook(id) {
   return { type: DELETEBOOK, id };
 }
+
+export { deleteBook, addBook };
