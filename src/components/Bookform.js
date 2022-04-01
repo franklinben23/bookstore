@@ -19,8 +19,7 @@ const BookForm = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     if (title.trim()) {
-      const bookAcc = addBook(title, author, uuidv4());
-      dispatch(bookAcc);
+      dispatch(addBook(uuidv4(), title, author));
       setTitle('');
       setAuthor('');
     } else {
