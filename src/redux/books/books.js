@@ -1,5 +1,3 @@
-// Actions
-
 // Reducer
 export default function booksReducer(state = [], action) {
   switch (action.type) {
