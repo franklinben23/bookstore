@@ -4,9 +4,9 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const Book = (props) => {
   const {
-    title, author, delButton, id, category
+    title, author, delButton, id, category,
   } = props;
-  
+
   const progress = 66;
   return (
     <div className="card-container">

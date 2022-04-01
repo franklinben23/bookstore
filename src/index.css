@@ -160,3 +160,67 @@
   border-radius: 3px;
   border: none;
 }
+
+.booklist,
+.form-container {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.form-container {
+  padding: 2rem 8rem;
+}
+
+.internal-form-container {
+  border-top: 1px solid #e8e8e8;
+}
+
+.title-form {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #888;
+}
+
+.form {
+  display: flex;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.author-input,
+.title-input {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+  color: #c4c4c4;
+  padding: 0.8rem;
+  border: 1px solid #e8e8e8;
+  width: 40%;
+}
+
+.submit-book {
+  font-family: "Roboto Slab", Helvetica, sans-serif;
+  font-size: 0.813rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background-color: #0290ff;
+  border-radius: 3px;
+  border: none;
+  padding: 1rem 2.5rem;
+}
+
+.user-container {
+  color: #0290ff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

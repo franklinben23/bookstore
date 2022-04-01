@@ -28,11 +28,16 @@ const BookForm = () => {
   };
 
   return (
-    <form className="book-form" onSubmit={formSubmit}>
-      <input type="text" placeholder="title" value={title} name="title" onChange={titleTilt} />
-      <input type="text" placeholder="author" value={author} name="author" onChange={authorTilt} />
-      <button type="submit">Submit</button>
-    </form>
+    <div className="form-container">
+      <div className="internal-form-container">
+        <p className="title-form">ADD NEW BOOK</p>
+        <form className="form" onSubmit={formSubmit}>
+          <input type="text" placeholder="Book Author" className="author-input" value={title} name="title" onChange={titleTilt} />
+          <input type="text" placeholder="Book title" className="title-input" value={author} name="author" onChange={authorTilt} />
+          <button type="submit" className="submit-book">ADD BOOK</button>
+        </form>
+      </div>
+    </div>
   );
 };
 
