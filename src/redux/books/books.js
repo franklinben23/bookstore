@@ -1,29 +1,61 @@
-// Actions
-const ADDBOOK = 'ADD_BOOK';
-const DELETEBOOK = 'DELETE_BOOK';
-
 // Reducer
-export default function booksReducer(state = [{ title: 'waterfall', author: 'benjamin', id: 10 }, { title: 'nightsky', author: 'juan', id: 15 }, { title: 'hate love', author: 'jose', id: 20 }], action) {
+export default function booksReducer(state = [], action) {
   switch (action.type) {
-    case 'ADD_BOOK':
-      return [
-        ...state, { title: action.title, author: action.author, id: action.id },
-      ];
-    case 'DELETE_BOOK':
-      return state.filter((book) => book.id !== action.id);
+    case 'API_DATA':
+      return (action.payload);
     default: return state;
   }
 }
 
 // Action Creators
-function addBook(title, author, id) {
-  return {
-    type: ADDBOOK, title, author, id,
-  };
-}
 
-function deleteBook(id) {
-  return { type: DELETEBOOK, id };
-}
+const apiBook = (data) => ({
+  type: 'API_DATA',
+  payload: data,
+});
 
-export { deleteBook, addBook };
+const getBooks = () => async (dispatch) => {
+  const apiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/50ClJ23HdaBoC56h87C9/books/';
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const data1 = [];
+  Object.entries(data).forEach(([key, value]) => {
+    const newValue = value[0];
+    const newdata = {
+      ...newValue,
+      id: key,
+    };
+    data1.push(newdata);
+  });
+  dispatch(apiBook(data1));
+};
+
+const addBook = (id, title, author) => async (dispatch) => {
+  await fetch('https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/50ClJ23HdaBoC56h87C9/books/', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: id,
+      title,
+      author,
+      category: 'my-category',
+    }),
+  });
+  dispatch(getBooks());
+};
+
+const deleteBook = (id) => async (dispatch) => {
+  await fetch(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/50ClJ23HdaBoC56h87C9/books/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ item_id: id }),
+  });
+  dispatch(getBooks());
+};
+
+export { deleteBook, addBook, getBooks };
